@@ -1,11 +1,14 @@
 // src/main.js
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
 import './assets/main.css' // 加上 Tailwind 樣式
 
 import GoogleLogin from 'vue3-google-login'
 
 const app = createApp(App)
+
+app.use(router)
 
 app.use(GoogleLogin, {
   clientId: '224583412435-mr756gti6j05voqt73mfbfjaia6t4f7j.apps.googleusercontent.com'

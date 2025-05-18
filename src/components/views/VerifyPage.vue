@@ -30,10 +30,13 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 // 假設 email 是從登入頁帶過來的，這邊先手動寫死（之後改）
-const email = 'test@example.com'
+const email = localStorage.getItem('userEmail') || ''
+const router = useRouter() 
 const code = ref('')
+
 
 const submitCode = async () => {
   try {
@@ -44,6 +47,7 @@ const submitCode = async () => {
 
     if (res.data.success) {
       alert('✅ 驗證成功，登入完成！')
+      router.push('/home')
     } else {
       alert('❌ 驗證碼錯誤，請再試一次')
     }
@@ -51,5 +55,7 @@ const submitCode = async () => {
     alert('後端連線失敗！')
     console.error(err)
   }
+  console.log('email:', email)
+console.log('code:', code.value)
 }
 </script>

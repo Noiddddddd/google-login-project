@@ -94,7 +94,8 @@ onMounted(() => {
 
       if (res.data.success) {
         alert('✅ 驗證信已寄出，請到 Gmail 收信！')
-        localStorage.setItem('userEmail', email)
+        localStorage.setItem('userEmail', res.data.email) 
+        router.push('/verify')
       } else {
         alert('❌ 驗證失敗，請稍後再試')
       }
